@@ -1,0 +1,6 @@
+Flair_Detector/__pycache__/settings.cpython-37.pyc
+Flair_Detector/__pycache__/urls.cpython-37.pyc
+app/__pycache__/classifier.cpython-37.pyc
+app/__pycache__/scrapper.cpython-37.pyc
+app/__pycache__/views.cpython-37.pyc
+*.pyc

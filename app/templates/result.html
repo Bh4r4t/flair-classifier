@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+{% block page_content %}
+<div class="result">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    {% if result %}
+        Predicted Flair: <strong>{{result}}</strong>
+    {% else %}
+        Enter a valid url
+    {% endif %}
+</div>
+{%endblock%}

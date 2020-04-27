@@ -1,0 +1,205 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flair Detector</title>
+
+    <style>
+        html {
+            height: 100%;
+        }  
+
+        header {
+            text-align: left;
+            height: 100px;
+            background-color: #ffffff;
+            color: black;
+            border-bottom: 1px solid black;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .header-container {
+            max-width: 950px;
+            width: 80%;
+            margin: 0 auto;
+            position: relative;
+            top: 50%;
+            transform: perspective(1px) translateY(-50%);
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        .header-text {
+            font-size: 48px;
+            font-size: 2.8rem;
+            line-height: 145px;
+            color: #ef4223;
+        }
+
+        .header-text span{
+            font-family: sans-serif;
+            color: #5f1c9c;
+        }
+
+        .center-block {
+            background-color: #5f1c9c;
+            padding-top: 30px;
+            padding-bottom: 90px;
+            margin-bottom: 50px;
+        }
+
+        .heading {
+            max-width: 1000px;
+            color: #ffffff;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 50px;
+        }
+
+        .heading h1 {
+            font-size: 35px;
+            margin-bottom: 20px;
+            font-family: sans-serif;
+        }
+
+        .heading h2 {
+            font-size: 20px;
+        }
+
+        .url-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #predict-form {
+            position: relative;
+        }
+
+        .url-input {
+            display: inline-block;
+            width: 82%;
+            padding-right: 15px;
+            height: 60px;
+            box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.04);
+            border-radius: 3px;
+            border: 1px solid #e0e0e0;
+            background-color: #fff;
+            padding-left: 10px;
+            color: #474756; 
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -0.3px;
+            background-repeat: no-repeat !important;
+            background-position: center left 12px !important;
+        }
+        
+        #predict-btn {
+            display: inline-block;
+            background: #8b3ea9;
+            font-size: 125%;
+            color: white;
+            font-size: 30px;
+            line-height: 58px;
+            width: 150px;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+            border-radius: 0 3px 3px 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        #predict-btn:hover {
+            background: #6a2884 !important; 
+        }
+
+        body,fieldset{
+            margin:0
+        }
+
+        html{
+            -moz-box-sizing:border-box;
+            box-sizing:border-box;
+            font-family:sans-serif;
+            line-height:1.4;
+            font-size:1em;
+            -ms-text-size-adjust:100%;
+            -webkit-text-size-adjust:100%
+        }*,
+        :after,:before{
+            -moz-box-sizing:inherit;
+            box-sizing:inherit
+        }
+
+        .result {
+            padding: 20px;
+            background-color: #ffbca3;
+            color: #de2e10;
+            margin-right: 20%;
+            margin-left: 20%;
+            font-size: x-large;
+        }
+
+        .closebtn {
+            margin-top: 7px;
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .closebtn:hover {
+            color: #de2e10;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container clearfix">
+          <a href={% url 'index' %}>
+            <div class="header-text">Flair <span>Detector</span></div>
+          </a>
+        </div>
+    </header>
+
+    <div class="center-block">
+        <div class="heading">
+            <h1>Detect Flair of a post from reddit</h1>
+            <h2> Type or paste link to reddit post and click <strong>Detect</strong></h2>
+        </div>
+
+        <!-- Form -->
+        <div class="url-form">
+            <form id="predict-form" onsubmit="return submit()" action=''  method="POST">{% csrf_token %}
+                <!-- <label for="{{ form.submiturl }}"></label> -->
+                <input type="text" name="url" id="posturl" class="url-input" placeholder="Paste link to reddit post here..."> -->
+                <!-- <input type="submit" id="predict-btn", value=Detect> -->
+                <input type="submit" id="predict-btn", value=Detect>
+                    Detect
+                </div>
+            </form>
+        </div>
+        <!--  -->
+
+    </div>
+
+    {% block page_content %}
+    <!-- Result -->
+    {% endblock %}
+</body>
+</html>
