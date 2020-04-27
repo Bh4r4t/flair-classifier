@@ -25,7 +25,7 @@ SECRET_KEY = 't78+vafgjyz-0m5^d_=egu9!xg)%2gs9b)5ds5a)gcxf1rzb(n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['flairdetect.herokuapp.com']
+ALLOWED_HOSTS = ['flairodetect.herokuapp.com']
 
 # Application definition
 

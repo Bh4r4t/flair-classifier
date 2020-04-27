@@ -183,19 +183,12 @@
             <h2> Type or paste link to reddit post and click <strong>Detect</strong></h2>
         </div>
 
-        <!-- Form -->
         <div class="url-form">
             <form id="predict-form" onsubmit="return submit()" action=''  method="POST">{% csrf_token %}
-                <!-- <label for="{{ form.submiturl }}"></label> -->
                 <input type="text" name="url" id="posturl" class="url-input" placeholder="Paste link to reddit post here..."> -->
-                <!-- <input type="submit" id="predict-btn", value=Detect> -->
                 <input type="submit" id="predict-btn", value=Detect>
-                    Detect
-                </div>
             </form>
         </div>
-        <!--  -->
-
     </div>
 
     {% block page_content %}

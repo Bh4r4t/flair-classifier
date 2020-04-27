@@ -8,7 +8,7 @@ from .classifier import predict, First
 
 model_path = 'app/model/model.pth'
 preload = First(model_path)
-urlPattern = r'https:\/\/www.reddit.com\/r\/india\/\S+'
+urlPattern = r'https:\/\/www.reddit.com\/r\/india\/comments\/\S+'
 reddit = praw.Reddit(client_id = 'k2akqxbdeejOWw',
                     client_secret='fZtXNfuqoOv9LSjUZVEMO2vY2wc',
                      user_agent='Scrapper')
@@ -25,6 +25,9 @@ def home(request):
 def processURL(url):
     print('0')
     scraped = scrape(url, reddit)
+    if scraped == None:
+        print('*')
+        return None
     print('1')
     text = preProcess(scraped)
     print('2')
@@ -34,15 +37,15 @@ def processURL(url):
 
 def show_results(request, url):
     result = processURL(url)
+    if not result:
+        return render(request, 'result.html', {})
     print(result)
     return render(request, 'result.html', {'result':result})
 
 @csrf_exempt
 def auto_test(request):
     if request.method == 'POST':
-        # txt_file = [request.FILES[key] for key in request.FILES.keys()]
         txt_file = request.FILES
-        # expecting only one input file
         result_dict = fromTxt(txt_file['upload_file'])
         json_file = json.dumps(result_dict)
         response = HttpResponse(json_file, content_type = 'application/json')
@@ -58,4 +61,3 @@ def fromTxt(file):
         pred = processURL(line.strip())
         result_dict[line] = pred
     return result_dict
-    
